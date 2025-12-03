@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmin Nacu - IT Specialist & Cybersecurity Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a52;
+            --accent: #2e8b9e;
+            --light-bg: #f5f7fa;
+            --dark-text: #1f2937;
+            --light-text: #6b7280;
+            --border: #e5e7eb;
+            --success: #059669;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: white;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .cv-container {
+                max-width: 210mm;
+                height: auto;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            @page {
+                margin: 0;
+                size: A4;
+            }
+            .sidebar {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                padding: 30mm 15mm;
+                /*height: 297mm;*/
+            }
+            .main-content {
+                padding: 30mm 15mm;
+            }
+        }
+
+        /* Responsive Container */
+        .cv-container {
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 0;
+            max-width: 95%;
+            height: auto;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 1024px) {
+            .cv-container {
+                max-width: 100%;
+                margin: 10px;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f2a3d 100%);
+            color: white;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                padding: 30px;
+                grid-column: 1;
+            }
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            overflow: hidden;
+            background-color: rgba(46, 139, 158, 0.3);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-placeholder {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-title {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sidebar Sections */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(46, 139, 158, 0.3);
+        }
+
+        .contact-item {
+            font-size: 12px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .contact-icon {
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 20px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(46, 139, 158, 0.2);
+            color: #b3e5ff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(46, 139, 158, 0.4);
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .language-item {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .language-level {
+            font-size: 10px;
+            background: var(--accent);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        /* Header */
+        .cv-header {
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-description {
+            font-size: 13px;
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Section Styling */
+        .section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            background: var(--primary);
+            padding: 10px 15px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .entry {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .entry-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .entry-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .entry-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--light-text);
+            flex-wrap: wrap;
+        }
+
+        .entry-date {
+            background: var(--light-bg);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .entry-company {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .entry-description {
+            font-size: 12px;
+            color: var(--light-text);
+            line-height: 1.5;
+            margin: 4px 0;
+        }
+
+        .achievement {
+            font-size: 12px;
+            color: var(--light-text);
+            margin-left: 16px;
+            padding-left: 8px;
+            border-left: 2px solid var(--accent);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .achievement::before {
+            content: "▸ ";
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .cert-status {
+            font-size: 11px;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--success);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .cert-status.in-progress {
+            background: rgba(46, 139, 158, 0.1);
+            color: var(--accent);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .cv-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            .sidebar {
+                padding: 20px;
+            }
+            .main-content {
+                padding: 15px;
+                gap: 20px;
+            }
+            .profile-name {
+                font-size: 22px;
+            }
+            .header-title {
+                font-size: 20px;
+            }
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            font-size: 12px;
+        }
+
+        button:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <!-- Profile -->
+            <div class="profile-section">
+                <div class="profile-photo">
+                    <img src="photo.jpeg" alt="Cosmin Nacu">
+                </div>
+                <div class="profile-name">Cosmin Nacu</div>
+                <div class="profile-title">IT Specialist & Cybersecurity Analyst</div>
+            </div>
+
+            <!-- Contact -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Contact</div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Settala, MI (CH available)</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>+39 324 048 9564</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>nacucosmin04@gmail.com</span>
+                </div>
+            </div>
+
+            <!-- Core Competencies -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Core Competencies</div>
+                <div class="skills-grid">
+                    <span class="skill-tag">Infrastructure Management</span>
+                    <span class="skill-tag">Vulnerability Management</span>
+                    <span class="skill-tag">Enterprise Networks</span>
+                    <span class="skill-tag">Security Operations</span>
+                    <span class="skill-tag">Incident Response</span>
+                    <span class="skill-tag">Systems Administration</span>
+                    <span class="skill-tag">Cloud & On-Premise</span>
+                    <span class="skill-tag">ISO 27001 Compliance</span>
+                </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Technologies & Tools</div>
+                <div class="skills-grid">
+                    <span class="skill-tag">Windows Server/Client</span>
+                    <span class="skill-tag">Linux Administration</span>
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">Fortinet Firewall</span>
+                    <span class="skill-tag">Ubiquiti AP</span>
+                    <span class="skill-tag">HP/Fortinet Switches</span>
+                    <span class="skill-tag">EDR/XDR (SentinelOne)</span>
+                    <span class="skill-tag">RMM (Datto, Ninja)</span>
+                    <span class="skill-tag">SIEM (Elastic)</span>
+                    <span class="skill-tag">Veeam/Proxmox/VMware</span>
+                    <span class="skill-tag">PowerShell Scripting</span>
+                    <span class="skill-tag">Bash/Python Scripting</span>
+                    <span class="skill-tag">Office 365</span>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Languages</div>
+                <div class="language-item">
+                    <span>English</span>
+                    <span class="language-level">B1/B2</span>
+                </div>
+                <div class="language-item">
+                    <span>Italian</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span>Romanian</span>
+                    <span class="language-level">Native</span>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Certifications</div>
+                <div class="entry">
+                    <div style="font-size: 12px; font-weight: 600;">CompTIA CySA+</div>
+                    <span class="cert-status in-progress">In Progress - Completion: ~January 2026</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- Header/Intro -->
+            <section class="cv-header">
+                <div class="header-title">PROFESSIONAL SUMMARY</div>
+                <div class="header-subtitle">2+ Years Infrastructure & Security Operations</div>
+                <p class="header-description">
+                    Results-driven IT Specialist with proven expertise managing complex enterprise infrastructures supporting 1000+ endpoints across mid-large organizations. Specialized in vulnerability management, security operations, and business continuity. Demonstrated ability to design, implement, and maintain resilient IT systems while ensuring compliance with ISO standards. Continuous learner passionate about cybersecurity, infrastructure optimization, and emerging security technologies.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section class="section">
+                <div class="section-title">Professional Experience</div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <div class="entry-title">IT Infrastructure Specialist</div>
+                        <div class="entry-meta">
+                            <span class="entry-date">Sep 2023 - Present</span>
+                        </div>
+                    </div>
+                    <div class="entry-company">VCS S.R.L. • Milan, Italy</div>
+                    <p class="entry-description">
+                        Enterprise infrastructure and security operations for mid-large organizations. Manage and maintain complex IT ecosystems supporting business continuity and information security.
+                    </p>
+                    <div class="achievement">Infrastructure Management: Administer 1000+ endpoints (Windows/Linux clients & servers) across enterprise environments, executing critical OS patches, software updates, and security configurations with minimal downtime.</div>
+                    <div class="achievement">Network & Security Operations: Configure and maintain enterprise network devices including Fortinet firewalls, HP/Fortinet switches, and Ubiquiti access points; deploy EDR/XDR solutions (SentinelOne) and SIEM systems (Elastic).</div>
+                    <div class="achievement">Vulnerability Management: Conduct vulnerability assessments, manage remediation workflows, and implement security controls to mitigate enterprise-level threats.</div>
+                    <div class="achievement">Compliance & Documentation: Design and implement ISO 27001 compliance frameworks, create security documentation, and ensure adherence to information security standards.</div>
+                    <div class="achievement">Backup & Disaster Recovery: Deploy and manage Veeam, Datto BCDR, and cloud backup solutions; configure disaster recovery procedures and test business continuity protocols.</div>
+                    <div class="achievement">Incident Response: Perform phishing/spam analysis (LibraEsva), investigate security incidents, and execute incident response procedures.</div>
+                </div>
+            </section>
+
+            <!-- Technical Skills (Detailed) -->
+            <section class="section">
+                <div class="section-title">Technical Expertise</div>
+
+                <div class="entry">
+                    <div class="entry-title">Systems & Infrastructure</div>
+                    <p class="entry-description">Windows Client/Server administration • Linux systems management • Active Directory configuration • Virtual infrastructure (VMware, Proxmox) • UPS/NAS management (APC, Eaton, QNAP, Synology) • Hardware provisioning & troubleshooting</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Security & Monitoring</div>
+                    <p class="entry-description">EDR/XDR deployment (SentinelOne) • SIEM implementation (Elastic Stack) • RMM solutions (Datto, Ninja RMM) • Vulnerability assessments & management • Incident response & forensics • Phishing/threat analysis • Security event monitoring (PRTG)</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Network Operations</div>
+                    <p class="entry-description">Firewall management (Fortinet) • Switch configuration (HP, Fortinet) • Wireless AP setup (Ubiquiti) • DNS/DHCP administration • Network troubleshooting • Enterprise connectivity</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Scripting & Automation</div>
+                    <p class="entry-description">PowerShell scripting (advanced) • Bash scripting • Python basics • Automation of routine tasks • Log parsing & analysis</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Cloud & Collaboration</div>
+                    <p class="entry-description">Microsoft Office 365 administration • Cloud backup solutions (Veeam Cloud, Cove, Datto BCDR) • Hybrid cloud infrastructure management</p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Compliance & Best Practices</div>
+                    <p class="entry-description">ISO 27001 framework design & implementation • Information security documentation • Swiss regulatory standards (LSIN/NIS2 awareness) • Security policy development • Business continuity planning</p>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section">
+                <div class="section-title">Education</div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <div class="entry-title">IT Specialist Diploma</div>
+                        <div class="entry-meta">
+                            <span class="entry-date">Completed</span>
+                        </div>
+                    </div>
+                    <div class="entry-company">I.T.I.S. Marconi • Italy</div>
+                    <p class="entry-description">
+                        Comprehensive foundation in computer science fundamentals: programming paradigms, systems architecture, networking theory, and infrastructure design. Coursework included object-oriented programming concepts and practical IT infrastructure hands-on projects.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Additional Info -->
+            <section class="section">
+                <div class="section-title">Additional Information</div>
+
+                <div class="entry">
+                    <div class="entry-title">Professional Attributes</div>
+                    <p class="entry-description">
+                        ✓ Proactive problem-solver with structured troubleshooting methodology • ✓ Strong communication skills in technical and non-technical contexts • ✓ Team-oriented professional with collaborative mindset • ✓ Continuous learner actively pursuing advanced certifications • ✓ Willing to relocate for on-site support and technical interventions
+                    </p>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-title">Availability</div>
+                    <p class="entry-description">
+                        Available for immediate engagement • Open to relocation within Switzerland and surrounding regions • Flexible for on-site infrastructure projects and critical support interventions
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
