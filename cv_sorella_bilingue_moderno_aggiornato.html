@@ -1,404 +1,140 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV Moderno - IT / EN</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy:#18364f;
-      --teal:#2a93a3;
-      --teal-soft:#dff3f4;
-      --ink:#22313f;
-      --muted:#64748b;
-      --paper:#f4f7f9;
-      --white:#ffffff;
-      --line:#dbe4ea;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(135deg,#eef3f6 0%, #dde9ef 100%);
-      font-family:'Inter',sans-serif;
-      color:var(--ink);
-      padding:28px;
-    }
-    .page{
-      max-width:1200px;
-      margin:0 auto 28px auto;
-      background:var(--white);
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:0 18px 50px rgba(18,42,60,.14);
-      display:grid;
-      grid-template-columns:320px 1fr;
-      min-height:1500px;
-    }
-    .sidebar{
-      background:linear-gradient(180deg, var(--navy) 0%, #0f2a3f 100%);
-      color:#eef7fb;
-      padding:36px 28px;
-    }
-    .photo{
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      margin:0 auto 24px;
-      border:5px solid rgba(255,255,255,.75);
-      outline:3px solid rgba(42,147,163,.65);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      font-size:14px;
-      line-height:1.4;
-      color:#d9edf2;
-      background:radial-gradient(circle at 30% 30%, #2f6f88, #153145);
-      padding:18px;
-      font-weight:600;
-    }
-    .name{
-      font-family:'Manrope',sans-serif;
-      font-size:42px;
-      line-height:1.05;
-      text-align:center;
-      font-weight:800;
-      margin:0;
-      letter-spacing:-0.03em;
-    }
-    .role{
-      text-align:center;
-      margin:14px 0 28px;
-      color:#6fd0dd;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:15px;
-      line-height:1.5;
-      font-weight:600;
-    }
-    .side-section{margin-top:28px}
-    .side-title{
-      color:#6fd0dd;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:700;
-      font-size:13px;
-      margin:0 0 14px;
-      padding-bottom:10px;
-      border-bottom:1px solid rgba(255,255,255,.16);
-    }
-    .contact p, .side-text{
-      margin:10px 0;
-      font-size:14px;
-      color:#e8f4f7;
-      line-height:1.55;
-    }
-    .pill{
-      display:inline-block;
-      margin:0 8px 10px 0;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(61,157,175,.18);
-      color:#e5fbff;
-      border:1px solid rgba(104,212,225,.18);
-      font-size:13px;
-      font-weight:500;
-    }
-    .main{
-      background:linear-gradient(180deg, #fbfdfe 0%, #f6f9fb 100%);
-      padding:40px 46px;
-    }
-    .lang-banner{
-      display:inline-block;
-      background:var(--teal-soft);
-      color:var(--teal);
-      border:1px solid #b6e2e7;
-      border-radius:999px;
-      padding:8px 14px;
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:12px;
-      letter-spacing:.03em;
-    }
-    h2{
-      font-family:'Manrope',sans-serif;
-      font-size:34px;
-      margin:0 0 8px;
-      color:#163247;
-      letter-spacing:-.03em;
-    }
-    .intro{
-      font-size:17px;
-      line-height:1.8;
-      color:#44576b;
-      margin:0 0 18px;
-    }
-    .divider{
-      height:4px;
-      width:100%;
-      background:linear-gradient(90deg, var(--teal), rgba(42,147,163,.25));
-      border-radius:999px;
-      margin:18px 0 34px;
-    }
-    .section{margin-bottom:34px}
-    .section-label{
-      color:#a0aab6;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:13px;
-      font-weight:800;
-      margin-bottom:18px;
-    }
-    .job-head{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:flex-start;
-      margin-bottom:10px;
-      flex-wrap:wrap;
-    }
-    .job-title{
-      font-size:28px;
-      font-weight:800;
-      color:#18364f;
-      margin:0;
-      font-family:'Manrope',sans-serif;
-    }
-    .job-date{
-      font-weight:800;
-      color:var(--teal);
-      font-size:20px;
-      white-space:nowrap;
-    }
-    .company{
-      font-size:22px;
-      font-weight:700;
-      margin:0 0 14px;
-      color:#203548;
-    }
-    .job-text{
-      font-size:16px;
-      line-height:1.8;
-      color:#4a5d70;
-      margin-bottom:18px;
-    }
-    ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    li{
-      position:relative;
-      padding-left:22px;
-      margin:12px 0;
-      line-height:1.75;
-      color:#33495d;
-      font-size:15.5px;
-    }
-    li::before{
-      content:"▸";
-      position:absolute;
-      left:0;
-      top:0;
-      color:var(--teal);
-      font-weight:800;
-    }
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-    .card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:22px;
-      box-shadow:0 8px 22px rgba(24,54,79,.05);
-    }
-    .card h3{
-      margin:0 0 10px;
-      color:#17344b;
-      font-family:'Manrope',sans-serif;
-      font-size:22px;
-    }
-    .small{
-      font-size:15px;
-      color:#526476;
-      line-height:1.7;
-      margin:0;
-    }
-    .footer-note{
-      margin-top:20px;
-      font-size:13px;
-      color:#789;
-    }
-    @media print{
-      body{padding:0;background:#fff}
-      .page{box-shadow:none;border-radius:0;margin:0;min-height:auto}
-    }
-    @media (max-width: 900px){
-      .page{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-      .main{padding:28px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – Nacu Madalina Andreea</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #f4f6f9; color: #2d2d2d; }
+  .wrapper { max-width: 820px; margin: 30px auto; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+  .header { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 40px; display: flex; align-items: center; gap: 30px; }
+  .photo { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #e0a96d; flex-shrink: 0; overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .header-info h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+  .header-info h2 { font-size: 14px; font-weight: 300; color: #e0a96d; margin-top: 5px; letter-spacing: 2px; text-transform: uppercase; }
+  .contacts { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #ccc; }
+  .body { display: grid; grid-template-columns: 1fr 2fr; }
+  .sidebar { background: #f0f4f8; padding: 30px 25px; }
+  .main { padding: 30px 35px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #e0a96d; border-bottom: 2px solid #e0a96d; padding-bottom: 5px; margin-bottom: 14px; }
+  .skill { margin-bottom: 10px; }
+  .skill-name { font-size: 13px; margin-bottom: 3px; }
+  .skill-bar { height: 5px; background: #ddd; border-radius: 5px; }
+  .skill-fill { height: 5px; background: #1a1a2e; border-radius: 5px; }
+  .lang { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
+  .lang-level { color: #e0a96d; font-weight: 600; font-size: 12px; }
+  .soft-skill { background: #1a1a2e; color: white; display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; margin: 3px 2px; }
+  .job { margin-bottom: 22px; position: relative; padding-left: 18px; }
+  .job::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: #e0a96d; border-radius: 50%; }
+  .job-title { font-size: 15px; font-weight: 600; color: #1a1a2e; }
+  .job-company { font-size: 13px; color: #e0a96d; font-weight: 600; }
+  .job-date { font-size: 11px; color: #888; margin-bottom: 7px; }
+  .job-desc { font-size: 13px; color: #555; line-height: 1.6; }
+  .job-desc ul { padding-left: 16px; margin-top: 5px; }
+  .job-desc li { margin-bottom: 4px; }
+  .edu-title { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+  .edu-school { font-size: 13px; color: #555; }
+  .edu-date { font-size: 11px; color: #888; }
+  .footer { text-align: center; padding: 15px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; }
+</style>
 </head>
 <body>
-
-  <section class="page">
-    <aside class="sidebar">
-      <div class="photo">Spazio foto<br>da inserire</div>
-      <h1 class="name">Madalina<br>Nacu</h1>
-      <div class="role">Operatrice Logistica &<br>Addetta al Confezionamento</div>
-
-      <div class="side-section contact">
-        <div class="side-title">Contatti</div>
-        <p>📍 Via Don Piazza 33, Pozzo d'Adda</p>
-        <p>📱 +39 327 650 4656</p>
-        <p>✉️ nacu.m.eafm@gmailcom</p>
-        <p>🎂 Data di nascita: 30/07/1998</p>
+<div class="wrapper">
+  <div class="header">
+    <div class="photo">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAA6agAwAEAAAAAQAABAAAAAAA/+AAEEgEAAOmAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/b5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/b5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8P/bAEMBAgMDBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQADv/aAAwDAQACEQMRAD8A" alt="Madalina Nacu" />
+    </div>
+    <div class="header-info">
+      <h1>Nacu Madalina Andreea</h1>
+      <h2>Operatrice Logistica · Settore Cosmetico</h2>
+      <div class="contacts">
+        <span>📞 +39 327 650 4656</span>
+        <span>✉️ nacu.m.eafm@gmail.com</span>
+        <span>📍 Via Don Piazza, 33 – Pozzo d'Adda (MI) 20060</span>
+        <span>🚗 Automunita · Patente B</span>
       </div>
+    </div>
+  </div>
 
-      <div class="side-section">
-        <div class="side-title">Competenze chiave</div>
-        <span class="pill">Packaging cosmetico</span>
-        <span class="pill">Logistica operativa</span>
-        <span class="pill">Preparazione ordini</span>
-        <span class="pill">Controllo qualità visivo</span>
-        <span class="pill">Organizzazione magazzino</span>
-        <span class="pill">Lavoro in team</span>
-        <span class="pill">Precisione</span>
-        <span class="pill">Affidabilità</span>
+  <div class="body">
+    <div class="sidebar">
+      <div class="section">
+        <div class="section-title">Competenze</div>
+        <div class="skill"><div class="skill-name">Gestione magazzino</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill"><div class="skill-name">Confezionamento cosmetici</div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill"><div class="skill-name">Controllo qualità</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill"><div class="skill-name">Picking & Packing</div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill"><div class="skill-name">Gestione ordini e spedizioni</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill"><div class="skill-name">MS Office / PC</div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
       </div>
-
-      <div class="side-section">
-        <div class="side-title">Lingue</div>
-        <p class="side-text">Italiano — Madrelingua</p>
-        <p class="side-text">Rumeno — Madrelingua</p>
-        <p class="side-text">Inglese — B1/B2</p>
+      <div class="section">
+        <div class="section-title">Lingue</div>
+        <div class="lang"><span>Italiano</span><span class="lang-level">Madrelingua</span></div>
+        <div class="lang"><span>Rumeno</span><span class="lang-level">Madrelingua</span></div>
+        <div class="lang"><span>Inglese</span><span class="lang-level">B1/B2</span></div>
       </div>
-
-      <div class="side-section">
-        <div class="side-title">Punti di forza</div>
-        <p class="side-text">Attenzione ai dettagli, flessibilità operativa, costanza, senso di responsabilità e capacità di adattarsi rapidamente ai cambi di reparto e di ritmo produttivo.</p>
+      <div class="section">
+        <div class="section-title">Soft Skills</div>
+        <span class="soft-skill">Precisione</span>
+        <span class="soft-skill">Affidabilità</span>
+        <span class="soft-skill">Lavoro in team</span>
+        <span class="soft-skill">Problem solving</span>
+        <span class="soft-skill">Flessibilità</span>
+        <span class="soft-skill">Gestione del tempo</span>
+        <span class="soft-skill">Attenzione al dettaglio</span>
+        <span class="soft-skill">Adattabilità</span>
       </div>
-    </aside>
+      <div class="section">
+        <div class="section-title">Altro</div>
+        <p style="font-size:13px;color:#555;line-height:1.6;">Patente B – Automunita<br>Disponibile su turni<br>Disponibile immediatamente</p>
+      </div>
+    </div>
 
-    <main class="main">
-      <div class="lang-banner">VERSIONE ITALIANA</div>
-      <h2>Profilo professionale</h2>
-      <p class="intro">Professionista con esperienza consolidata nel settore cosmetico e logistico, maturata all'interno di MAD Cosmetics dal 2019 al 2026. Ha sviluppato un percorso di crescita concreto, partendo dal confezionamento prodotti e passando nel 2021 al ruolo di operatrice logistica, con responsabilità sempre più ampie nella gestione operativa, nella preparazione ordini e nel supporto ai flussi di magazzino. Profilo serio e collaborativo, apprezzato per precisione, affidabilità, senso pratico e capacità di lavorare con continuità in contesti dinamici.</p>
-      <div class="divider"></div>
-
-      <section class="section">
-        <div class="section-label">Esperienza professionale</div>
-        <div class="job-head">
-          <h3 class="job-title">Operatrice logistica / Addetta al confezionamento cosmetici</h3>
-          <div class="job-date">Nov 2019 – Apr 2026</div>
+    <div class="main">
+      <div class="section">
+        <div class="section-title">Profilo Professionale</div>
+        <p style="font-size:13px;color:#555;line-height:1.7;">Professionista con oltre 6 anni di esperienza nel settore della logistica e del confezionamento industriale, maturata interamente nel settore cosmetico. Capacità di operare con precisione e rapidità in ambienti produttivi dinamici, garantendo il rispetto degli standard qualitativi e delle tempistiche di consegna. Orientata al risultato, con spiccate doti relazionali e forte spirito di squadra.</p>
+      </div>
+      <div class="section">
+        <div class="section-title">Esperienza Professionale</div>
+        <div class="job">
+          <div class="job-title">Operatrice Logistica</div>
+          <div class="job-company">MAD Cosmetics – Inzago (MI)</div>
+          <div class="job-date">Gennaio 2021 – Aprile 2026</div>
+          <div class="job-desc"><ul>
+            >Gestione operativa del magazzino: ricezione, stoccaggio e movimentazione merci</li>
+            >Preparazione e controllo degli ordini in uscita (picking, packing, etichettatura)</li>
+            >Coordinamento con il reparto produzione per garantire la continuità del flusso logistico</li>
+            >Utilizzo di transpallet manuali ed elettrici per la movimentazione di pallet</li>
+            >Gestione inventari periodici e verifica delle giacenze a magazzino</li>
+            >Rispetto rigoroso delle normative igienico-sanitarie del settore cosmetico</li>
+          </ul></div>
         </div>
-        <p class="company">MAD Cosmetics</p>
-        <p class="job-text">All'interno dell'azienda ha ricoperto inizialmente il ruolo di addetta al confezionamento, occupandosi della preparazione e confezione dei prodotti cosmetici secondo standard qualitativi e produttivi. Dal 2021 ha assunto il ruolo di operatrice logistica, ampliando il proprio contributo nella gestione del flusso delle merci, nelle attività di stoccaggio, nella preparazione ordini e nel supporto alle spedizioni, con attenzione all'efficienza operativa e al rispetto delle tempistiche.</p>
-        <ul>
-          <li>Confezionamento accurato di prodotti cosmetici con attenzione a qualità, ordine e conformità del packaging.</li>
-          <li>Controllo visivo dei prodotti e verifica dell'integrità del confezionamento, con segnalazione tempestiva di eventuali anomalie.</li>
-          <li>Supporto alle linee operative e preparazione dei materiali necessari alle attività giornaliere.</li>
-          <li>Preparazione ordini, smistamento articoli, picking e packing in base alle priorità produttive e logistiche, contribuendo a un flusso di evasione ordinato ed efficiente.</li>
-          <li>Collaborazione nella gestione del magazzino e nella movimentazione della merce in entrata e in uscita, supportando ricezione, stoccaggio e corretta distribuzione interna dei materiali.</li>
-          <li>Contributo al mantenimento di un ambiente di lavoro ordinato, efficiente e conforme alle procedure interne, con attenzione alla tracciabilità operativa e alla continuità del processo logistico.</li>
-        </ul>
-      </section>
-
-      <section class="section grid-2">
-        <div class="card">
-          <h3>Istruzione</h3>
-          <p class="small"><strong>Diploma Tecnico dei Servizi Commerciali</strong><br>Istituto Marisa Bellisario, Inzago<br>Diploma conseguito nel 2019.</p>
+        <div class="job">
+          <div class="job-title">Addetta al Confezionamento Cosmetici</div>
+          <div class="job-company">MAD Cosmetics – Inzago (MI)</div>
+          <div class="job-date">Novembre 2019 – Dicembre 2020</div>
+          <div class="job-desc"><ul>
+            >Confezionamento manuale e semi-automatico di prodotti cosmetici su linea di produzione</li>
+            >Controllo qualità visivo dei prodotti finiti e verifica della conformità agli standard aziendali</li>
+            >Gestione dell'etichettatura e dell'imballaggio nel rispetto delle specifiche tecniche</li>
+            >Manutenzione ordinaria delle postazioni di lavoro e rispetto delle norme di sicurezza</li>
+          </ul></div>
         </div>
-        <div class="card">
-          <h3>Soft skills</h3>
-          <p class="small">Precisione, affidabilità, gestione delle priorità, spirito di collaborazione, adattabilità, buona resistenza ai ritmi di lavoro e orientamento al risultato.</p>
-        </div>
-      </section>
-    </main>
-  </section>
-
-  <section class="page">
-    <aside class="sidebar">
-      <div class="photo">Photo<br>placeholder</div>
-      <h1 class="name">Madalina<br>Nacu</h1>
-      <div class="role">Logistics Operator &<br>Cosmetic Packaging Operator</div>
-
-      <div class="side-section contact">
-        <div class="side-title">Contact</div>
-        <p>📍 Via Don Piazza 33, Pozzo d'Adda, Italy</p>
-        <p>📱 +39 327 650 4656</p>
-        <p>✉️ nacu.m.eafm@gmailcom</p>
-        <p>🎂 Date of birth: 30/07/1998</p>
       </div>
-
-      <div class="side-section">
-        <div class="side-title">Core skills</div>
-        <span class="pill">Cosmetic packaging</span>
-        <span class="pill">Operational logistics</span>
-        <span class="pill">Order preparation</span>
-        <span class="pill">Visual quality control</span>
-        <span class="pill">Warehouse support</span>
-        <span class="pill">Teamwork</span>
-        <span class="pill">Accuracy</span>
-        <span class="pill">Reliability</span>
+      <div class="section">
+        <div class="section-title">Istruzione</div>
+        <div class="edu-title">Diploma Tecnico dei Servizi Commerciali</div>
+        <div class="edu-school">I.P. Marisa Bellisario – Inzago (MI)</div>
+        <div class="edu-date">2019</div>
       </div>
+    </div>
+  </div>
 
-      <div class="side-section">
-        <div class="side-title">Languages</div>
-        <p class="side-text">Italian — Native</p>
-        <p class="side-text">Romanian — Native</p>
-        <p class="side-text">English — B1/B2</p>
-      </div>
-
-      <div class="side-section">
-        <div class="side-title">Strengths</div>
-        <p class="side-text">Detail-oriented, dependable and flexible professional with a practical mindset, steady work ethic and strong ability to adapt to changing operational needs.</p>
-      </div>
-    </aside>
-
-    <main class="main">
-      <div class="lang-banner">ENGLISH VERSION</div>
-      <h2>Professional profile</h2>
-      <p class="intro">Professional with solid experience in the cosmetics and logistics sector, gained at MAD Cosmetics from 2019 to 2026. She built a clear internal growth path, starting in cosmetic packaging and moving in 2021 into the logistics operator role, taking on broader responsibilities in operational support, order preparation and warehouse flow activities. Reliable and team-oriented, with strong attention to detail, consistency, adaptability and a practical approach to fast-paced working environments.</p>
-      <div class="divider"></div>
-
-      <section class="section">
-        <div class="section-label">Professional experience</div>
-        <div class="job-head">
-          <h3 class="job-title">Logistics Operator / Cosmetic Packaging Operator</h3>
-          <div class="job-date">Nov 2019 – Apr 2026</div>
-        </div>
-        <p class="company">MAD Cosmetics</p>
-        <p class="job-text">She initially worked in cosmetic packaging, supporting the preparation and packaging of products in line with production and quality standards. In 2021, she transitioned to the logistics operator role and expanded her contribution to goods flow management, storage activities, order preparation and shipping support, with a strong focus on operational efficiency and timing.</p>
-        <ul>
-          <li>Packaged cosmetic products accurately while maintaining quality, order and packaging compliance.</li>
-          <li>Performed visual product checks and monitored packaging integrity, reporting issues when necessary.</li>
-          <li>Supported operational lines and prepared materials required for daily activities.</li>
-          <li>Handled order preparation, item sorting, picking and packing based on logistics and production priorities, helping ensure an efficient fulfillment workflow.</li>
-          <li>Assisted warehouse operations and contributed to the movement of inbound and outbound goods, supporting receiving, storage and the correct internal distribution of materials.</li>
-          <li>Helped maintain an organized, efficient and procedure-compliant work environment, with attention to operational traceability and process continuity.</li>
-        </ul>
-      </section>
-
-      <section class="section grid-2">
-        <div class="card">
-          <h3>Education</h3>
-          <p class="small"><strong>Diploma in Commercial Services</strong><br>Marisa Bellisario Institute, Inzago<br>Graduated in 2019.</p>
-        </div>
-        <div class="card">
-          <h3>Soft skills</h3>
-          <p class="small">Accuracy, reliability, priority management, teamwork, adaptability, good work pace resistance and a results-oriented mindset.</p>
-        </div>
-      </section>
-      <p class="footer-note">Layout inspired by a modern two-column professional resume structure with visual sidebar, rounded skill tags, elegant typography and dedicated photo space.</p>
-    </main>
-  </section>
+  <div class="footer">Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003 e del GDPR 679/2016</div>
+</div>
 </body>
 </html>
